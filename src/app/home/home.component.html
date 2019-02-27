@@ -1,0 +1,64 @@
+<div class="container">
+
+<h3>Employee Form</h3>
+<form #form="ngForm" novalidate>
+    <div class="form-group">
+   <label for="firstNameId">First Name</label>
+        <input type="text"  required  class="form-control" placeholder="FirstName" name="firstName"
+               [(ngModel)]="model.firstName"
+         > 
+    </div>
+    
+    <div class="form-group">
+            <label >Last Name</label>
+                 <input  type="text" class="form-control" placeholder="LastName" name="lastName" 
+                 [(ngModel)]="model.lastName"> 
+             </div>
+ <div class="checkbox">
+    <label>
+        <input type="checkbox" name="is-full-time"
+         [(ngModel)]="model.isFulTime">Full Time Employee
+    </label>
+</div>
+
+<label>Payment Type</label>
+<div class="radio">
+    <label>
+        <input type="radio" name="paymentType" value="w2" checked
+        [(ngModel)]="model.paymentType">
+        w2
+    </label>
+</div>
+<div class="radio">
+        <label>
+            <input type="radio" name="paymentType" value="1099" 
+            [(ngModel)]="model.paymentType">
+            1099
+        </label>
+    </div>
+
+    
+    <div class="form-group">
+            <label>Primary Language</label>
+             <select class="form-control"
+             name="primaryLanguage"
+             [(ngModel)]="model.primaryLanguage"
+              >
+                 <option *ngFor="let lang of languages">
+                     {{lang}}
+                 </option>
+             </select>
+        </div>
+
+        <div class="form-group">
+                <label>Date Hired</label>
+                     <input type="date" class="form-control"> 
+                 </div> 
+                
+        <button  class="btn btn-primary" type="submit">OK</button>
+</form>
+Model:{{model | json}}
+</div>
+<br>
+Angular:{{form.value | json}}
+{{form.pristine}}
