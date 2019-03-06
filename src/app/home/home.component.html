@@ -1,4 +1,5 @@
-<div class="container">
+<h3 *ngIf="languages.length==0" >Loading..</h3>
+<div  class="container"  >
 
 <h3>Employee Form</h3>
 <form #form="ngForm"  (submit)="submitForm(form)" novalidate>
@@ -53,7 +54,7 @@
 
              [(ngModel)]="model.primaryLanguage" >
               <option value="default">Select a Language...</option>
-                 <option *ngFor="let lang of languages">
+                 <option *ngFor="let lang of languages" >
                      {{lang}}
                  </option>
              </select>
