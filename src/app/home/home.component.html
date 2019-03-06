@@ -1,13 +1,19 @@
 <div class="container">
 
 <h3>Employee Form</h3>
-<form #form="ngForm" novalidate>
-    <div class="form-group">
-   <label for="firstNameId">First Name</label>
-        <input type="text"  required  class="form-control" placeholder="FirstName" name="firstName"
+<form #form="ngForm"  (submit)="submitForm(form)" novalidate>
+     <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched" >
+   <label  class="control-label" >First Name</label>
+        <input #firstName="ngModel" pattern="...+" type="text"  required  class="form-control" placeholder="FirstName" name="firstName"
                [(ngModel)]="model.firstName"
          > 
-    </div>
+
+         <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
+           First Name is Required nd must be atleaset 3 characters
+         </div>
+    </div> 
+
+   
     
     <div class="form-group">
             <label >Last Name</label>
@@ -40,22 +46,31 @@
     
     <div class="form-group">
             <label>Primary Language</label>
-             <select class="form-control"
-             name="primaryLanguage"
-             [(ngModel)]="model.primaryLanguage"
-              >
+             <select class="form-control" #primaryLanguage="ngModel"
+             name="primaryLanguage" 
+             (blur)="validatePrimaryLanguage(primaryLanguage.value)"
+             (change)="validatePrimaryLanguage(primaryLanguage.value)"
+
+             [(ngModel)]="model.primaryLanguage" >
+              <option value="default">Select a Language...</option>
                  <option *ngFor="let lang of languages">
                      {{lang}}
                  </option>
              </select>
+             <div  class="alert alert-danger" *ngIf="hasPrimaryLanguageError"
+             
+             >
+                   Select Valid Language  </div>
         </div>
 
-        <div class="form-group">
+       <div class="form-group">
                 <label>Date Hired</label>
                      <input type="date" class="form-control"> 
-                 </div> 
+                 </div>  
                 
-        <button  class="btn btn-primary" type="submit">OK</button>
+        <button  class="btn btn-primary" type="submit"
+        [disabled]="form.invalid"
+        >OK</button>
 </form>
 Model:{{model | json}}
 </div>
