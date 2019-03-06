@@ -16,6 +16,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
 import { FormPoster } from './services/form.poster.service';
 
+import {DatepickerModule} from 'ng2-bootstrap/ng2-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,7 @@ import { FormPoster } from './services/form.poster.service';
     ContactComponent
   ],
   imports: [
+    DatepickerModule.forRoot(),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

@@ -12,6 +12,8 @@ export class HomeComponent {
   languages=[];
   model=new Employee('Sumit','Williams',false,'','default');
   hasPrimaryLanguageError=false;
+  minDate=new Date('Oct 12 2016');
+  startDate:Date;
 
 constructor(private formPoster:FormPoster){
   this.formPoster.getLanguages()

@@ -73,8 +73,18 @@
         [disabled]="form.invalid"
         >OK</button>
 </form>
-Model:{{model | json}}
+
 </div>
+
 <br>
-Angular:{{form.value | json}}
-{{form.pristine}}
+<h3>Angular2 Forms</h3>
+<div class="container">
+<form>
+<div class="form-group" style="display: inline-block;">
+<datepicker name="startDate" [(ngModel)]="startDate" 
+ [showWeeks]="false"
+ [minDate]="minDate"></datepicker>
+</div>
+</form>
+<h3>{{startDate}}</h3>
+</div>
